@@ -1,0 +1,57 @@
+{
+  "packages": {
+    "cocos-service": {
+      "configID": "94f37d",
+      "services": [
+        {
+          "service_id": "235",
+          "service_component_name": "service-analytics",
+          "builder": "/Users/gengjian/.CocosCreator/.service/analytics/builder/builder.js",
+          "enable": false,
+          "params": {
+            "app_id": "636469620",
+            "store_id": "160564"
+          }
+        }
+      ],
+      "__version__": "3.0.1"
+    },
+    "wechatgame": {
+      "startSceneAssetBundle": true,
+      "orientation": "portrait",
+      "appid": "wx0a905fba275f3702",
+      "separateEngine": false,
+      "wasm": "js",
+      "buildOpenDataContextTemplate": false,
+      "__version__": "1.0.0"
+    }
+  },
+  "name": "SnowLegend",
+  "platform": "wechatgame",
+  "buildPath": "project://dist",
+  "debug": false,
+  "md5Cache": true,
+  "sourceMaps": false,
+  "replaceSplashScreen": true,
+  "mainBundleCompressionType": "subpackage",
+  "mainBundleIsRemote": false,
+  "mergeStartScene": false,
+  "experimentalEraseModules": false,
+  "compressTexture": true,
+  "packAutoAtlas": true,
+  "startScene": "6b9d6f22-5360-41d1-8bab-51832bf1dcda",
+  "scenes": [
+    {
+      "url": "db://assets/pages/Login/Login.scene",
+      "uuid": "6b9d6f22-5360-41d1-8bab-51832bf1dcda",
+      "inBundle": false
+    },
+    {
+      "url": "db://assets/pages/Test/Test.scene",
+      "uuid": "8624af61-60f5-417c-8d72-d321e1f89ecf",
+      "inBundle": true
+    }
+  ],
+  "outputName": "wechatgame",
+  "__version__": "1.2.8"
+}

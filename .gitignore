@@ -27,3 +27,4 @@ node_modules/
 # 输出
 #//////////////////////////
 dist/
+!dist/wechatgame/images

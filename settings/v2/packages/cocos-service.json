@@ -8,6 +8,10 @@
     {
       "app_id": "UNKNOW",
       "config_id": "645dfe"
+    },
+    {
+      "app_id": "636469620",
+      "config_id": "94f37d"
     }
   ],
   "configs": [
@@ -17,6 +21,22 @@
       "config_name": "Default",
       "config_remarks": "",
       "services": []
+    },
+    {
+      "app_id": "636469620",
+      "config_id": "94f37d",
+      "config_name": "Default",
+      "config_remarks": "",
+      "services": [
+        {
+          "service_id": "235",
+          "enable": false,
+          "param": {
+            "app_id": "636469620",
+            "store_id": "160564"
+          }
+        }
+      ]
     }
   ]
 }

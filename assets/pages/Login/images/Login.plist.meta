@@ -1,0 +1,188 @@
+{
+  "ver": "1.0.6",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f",
+  "files": [
+    ".plist",
+    ".json"
+  ],
+  "subMetas": {
+    "80d30": {
+      "importer": "sprite-frame",
+      "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f@80d30",
+      "displayName": "",
+      "id": "80d30",
+      "name": "Button",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 81,
+        "trimY": 0,
+        "width": 251,
+        "height": 108,
+        "rawWidth": 251,
+        "rawHeight": 108,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b21d1c81-c031-421a-abf3-c79d2f93ebd1@6c48a",
+        "atlasUuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0d02c": {
+      "importer": "sprite-frame",
+      "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f@0d02c",
+      "displayName": "",
+      "id": "0d02c",
+      "name": "Check",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 38,
+        "height": 38,
+        "rawWidth": 38,
+        "rawHeight": 38,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b21d1c81-c031-421a-abf3-c79d2f93ebd1@6c48a",
+        "atlasUuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "27f51": {
+      "importer": "sprite-frame",
+      "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f@27f51",
+      "displayName": "",
+      "id": "27f51",
+      "name": "Checked",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 38,
+        "trimY": 0,
+        "width": 43,
+        "height": 38,
+        "rawWidth": 43,
+        "rawHeight": 38,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b21d1c81-c031-421a-abf3-c79d2f93ebd1@6c48a",
+        "atlasUuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b654f": {
+      "importer": "sprite-frame",
+      "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f@b654f",
+      "displayName": "",
+      "id": "b654f",
+      "name": "Label",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 121,
+        "width": 930,
+        "height": 320,
+        "rawWidth": 930,
+        "rawHeight": 320,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b21d1c81-c031-421a-abf3-c79d2f93ebd1@6c48a",
+        "atlasUuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b217b": {
+      "importer": "sprite-frame",
+      "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f@b217b",
+      "displayName": "",
+      "id": "b217b",
+      "name": "Title",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 332,
+        "trimY": 0,
+        "width": 488,
+        "height": 121,
+        "rawWidth": 488,
+        "rawHeight": 121,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "b21d1c81-c031-421a-abf3-c79d2f93ebd1@6c48a",
+        "atlasUuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "Login.png",
+    "format": 3,
+    "uuid": "cfb9abbf-cf18-474e-866b-8b4bcb9b495f",
+    "textureUuid": "b21d1c81-c031-421a-abf3-c79d2f93ebd1@6c48a"
+  }
+}
