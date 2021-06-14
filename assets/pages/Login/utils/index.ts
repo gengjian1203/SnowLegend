@@ -1,11 +1,12 @@
+import { sys } from "cc";
+
 /**
  * 监听被动分享
  * @returns
  */
 export const passiveShare = () => {
   // 监听小程序右上角菜单的「转发」按钮
-  // @ts-ignore
-  if (typeof wx === "undefined") {
+  if (sys.platform !== sys.WECHAT_GAME) {
     return;
   }
   // 显示当前页面的转发按钮
@@ -36,8 +37,7 @@ export const passiveShare = () => {
  * @returns
  */
 export const createLoginButton = () => {
-  // @ts-ignore
-  if (typeof wx === "undefined") {
+  if (sys.platform !== sys.WECHAT_GAME) {
     return;
   }
   //获取系统信息的宽度
