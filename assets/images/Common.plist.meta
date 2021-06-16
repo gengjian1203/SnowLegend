@@ -1,0 +1,86 @@
+{
+  "ver": "1.0.6",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69",
+  "files": [
+    ".plist",
+    ".json"
+  ],
+  "subMetas": {
+    "4813c": {
+      "importer": "sprite-frame",
+      "uuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69@4813c",
+      "displayName": "",
+      "id": "4813c",
+      "name": "CommonDialogBg_RETINA0",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 593,
+        "height": 216,
+        "rawWidth": 593,
+        "rawHeight": 216,
+        "borderTop": 50,
+        "borderBottom": 50,
+        "borderLeft": 50,
+        "borderRight": 50,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "98aba681-fe4d-45c1-94d8-efdc1e12a530@6c48a",
+        "atlasUuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "9a816": {
+      "importer": "sprite-frame",
+      "uuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69@9a816",
+      "displayName": "",
+      "id": "9a816",
+      "name": "CommonDialogBg_RETINA1",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 593,
+        "trimY": 0,
+        "width": 65,
+        "height": 65,
+        "rawWidth": 65,
+        "rawHeight": 65,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "98aba681-fe4d-45c1-94d8-efdc1e12a530@6c48a",
+        "atlasUuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "Common.png",
+    "format": 3,
+    "uuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69",
+    "textureUuid": "98aba681-fe4d-45c1-94d8-efdc1e12a530@6c48a"
+  }
+}
