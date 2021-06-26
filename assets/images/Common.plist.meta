@@ -8,6 +8,40 @@
     ".json"
   ],
   "subMetas": {
+    "80d30": {
+      "importer": "sprite-frame",
+      "uuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69@80d30",
+      "displayName": "",
+      "id": "80d30",
+      "name": "Button",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 251,
+        "height": 108,
+        "rawWidth": 251,
+        "rawHeight": 108,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "98aba681-fe4d-45c1-94d8-efdc1e12a530@6c48a",
+        "atlasUuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
     "4813c": {
       "importer": "sprite-frame",
       "uuid": "c0f53185-aa7d-4a55-8c38-aac0cec21b69@4813c",
@@ -20,7 +54,7 @@
         "rotated": false,
         "offsetX": 0,
         "offsetY": 0,
-        "trimX": 0,
+        "trimX": 251,
         "trimY": 0,
         "width": 593,
         "height": 216,
@@ -54,7 +88,7 @@
         "rotated": false,
         "offsetX": 0,
         "offsetY": 0,
-        "trimX": 593,
+        "trimX": 844,
         "trimY": 0,
         "width": 65,
         "height": 65,

@@ -111,6 +111,8 @@ export class Login extends Component {
 
     dlgModal.setDialogTitle("公告");
     dlgModal.setDialogContent("公告内容丫");
+    dlgModal.setBtnConfirmActive(false);
+    dlgModal.setLabelConfirm("sssssss");
     this.m_canvas.addChild(this.dlgModal);
   }
 

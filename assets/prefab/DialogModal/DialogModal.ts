@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Label } from "cc";
+import { _decorator, Component, Node, Label, Button } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("DialogModal")
@@ -14,6 +14,18 @@ export class DialogModal extends Component {
    */
   @property(Node)
   m_labelContent: any = undefined;
+
+  /**
+   * 确认按钮
+   */
+  @property(Node)
+  m_btnConfirm: any = undefined;
+
+  /**
+   * 确认按钮文案
+   */
+  @property(Node)
+  m_labelConfirm: any = undefined;
 
   start() {
     // [3]
@@ -41,6 +53,24 @@ export class DialogModal extends Component {
     const labelContent = this.m_labelContent.getComponent(Label);
     labelContent.string = str;
     // labelContent._forceUpdateRenderData(true);
+  }
+
+  /**
+   * 设置确认按钮是否展示
+   */
+  setBtnConfirmActive(isActive: boolean) {
+    const btnConfirm = this.m_btnConfirm.getComponent(Button);
+    console.log("ModuleDialog setBtnConfirmActive.", isActive, btnConfirm);
+    btnConfirm.node.active = isActive;
+  }
+
+  /**
+   * 设置确认按钮文案
+   */
+  setLabelConfirm(strLabel: string) {
+    console.log("ModuleDialog setLabelConfirm.", strLabel);
+    const labelConfirm = this.m_labelConfirm.getComponent(Label);
+    labelConfirm.string = strLabel;
   }
 }
 
