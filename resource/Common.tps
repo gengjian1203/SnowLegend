@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename></filename>
+        <filename>../assets/images/Common.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>

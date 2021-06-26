@@ -1,5 +1,5 @@
 /**
- * queryUserInfo
+ * addUserInfo
  * 新增 UserInfo 相关的信息
  * @param {*} event
  * @param {*} db

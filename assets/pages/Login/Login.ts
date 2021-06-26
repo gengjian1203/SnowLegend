@@ -1,4 +1,4 @@
-import { _decorator, Component, director } from "cc";
+import { _decorator, Component, instantiate, Node, Prefab } from "cc";
 import StorageManager from "../../services/StorageManager";
 import RouterManager from "../../services/RouterManager";
 import Api from "./api";
@@ -8,13 +8,28 @@ const { ccclass, property } = _decorator;
 
 @ccclass("Login")
 export class Login extends Component {
-  // [1]
-  // dummy = '';
+  /**
+   * 登录按钮
+   */
   btnLogin: any = undefined;
 
-  // [2]
-  // @property
-  // serializableDummy = 0;
+  /**
+   * 模态对话框
+   */
+  dlgModal: any = undefined;
+
+  /**
+   * 画布对象
+   */
+  @property(Node)
+  m_canvas: any = undefined;
+
+  /**
+   * 预制体-对话框
+   */
+  @property(Prefab)
+  m_prefabDlg: any = undefined;
+
   start() {
     console.log("Login start...");
     this.init();
@@ -81,6 +96,22 @@ export class Login extends Component {
       console.log("Login getUserInfo", res);
       RouterManager.navigateTo("Main");
     }
+  }
+
+  /**
+   * 点击公告按钮
+   */
+  async handleBtnNoticeClick() {
+    console.log("handleBtnNoticeClick");
+    if (this.btnLogin) {
+      this.btnLogin.hide();
+    }
+    this.dlgModal = instantiate(this.m_prefabDlg);
+    const dlgModal = this.dlgModal.getComponent("DialogModal");
+
+    dlgModal.setDialogTitle("公告");
+    dlgModal.setDialogContent("公告内容丫");
+    this.m_canvas.addChild(this.dlgModal);
   }
 
   /**
