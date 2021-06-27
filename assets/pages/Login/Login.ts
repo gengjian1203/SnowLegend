@@ -1,4 +1,5 @@
 import { _decorator, Component, instantiate, Node, Prefab } from "cc";
+import IDManager from "../../services/IDManager";
 import StorageManager from "../../services/StorageManager";
 import RouterManager from "../../services/RouterManager";
 import Api from "./api";
@@ -71,7 +72,11 @@ export class Login extends Component {
       this.btnLogin.onTap(this.hanldeBtnLoginClick);
       this.btnLogin.show();
     }
-    this.node.on("on-dialog-modal-close", this.handleDialogModalClose, this);
+    this.node.on(
+      IDManager.ID_EVENT_DIALOG_MODAL_CLOSE,
+      this.handleDialogModalClose,
+      this
+    );
   }
 
   /**
@@ -83,7 +88,11 @@ export class Login extends Component {
       this.btnLogin.destroy();
       this.btnLogin = undefined;
     }
-    this.node.off("on-dialog-modal-close", this.handleDialogModalClose, this);
+    this.node.off(
+      IDManager.ID_EVENT_DIALOG_MODAL_CLOSE,
+      this.handleDialogModalClose,
+      this
+    );
   }
 
   /**
@@ -94,7 +103,7 @@ export class Login extends Component {
     // console.log("hanldeBtnLoginClick", userInfo);
     if (userInfo) {
       StorageManager.setStorageSync("USERINFO", userInfo);
-      const res = await Api.getUserInfo({});
+      const res = await Api.loginMemberInfo();
       console.log("Login getUserInfo", res);
       RouterManager.navigateTo("Main");
     }
@@ -123,7 +132,7 @@ export class Login extends Component {
    */
   async handleBtnTestClick() {
     // console.log("handleBtnTestClick");
-    RouterManager.navigateTo("Main");
+    RouterManager.navigateTo("Preface");
   }
 
   /**

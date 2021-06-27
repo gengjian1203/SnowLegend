@@ -1,12 +1,14 @@
-import { _decorator, Component, Event, Node, Label, Button } from "cc";
+import { _decorator, Component, Node, Label, Button } from "cc";
 import MyEvent from "../../services/MyEvent";
 import IDManager from "../../services/IDManager";
 import UtilsManager from "../../services/UtilsManager";
 
 const { ccclass, property } = _decorator;
 
-@ccclass("DialogModal")
-export class DialogModal extends Component {
+@ccclass("DialogSelect")
+export class DialogSelect extends Component {
+  dialogID = "";
+
   /**
    * 灰色蒙版
    */
@@ -26,16 +28,16 @@ export class DialogModal extends Component {
   m_labelContent: any = undefined;
 
   /**
+   * 取消按钮
+   */
+  @property(Node)
+  m_btnCancel: any = undefined;
+
+  /**
    * 确认按钮
    */
   @property(Node)
   m_btnConfirm: any = undefined;
-
-  /**
-   * 确认按钮文案
-   */
-  @property(Node)
-  m_labelConfirm: any = undefined;
 
   start() {
     // [3]
@@ -74,6 +76,13 @@ export class DialogModal extends Component {
   /**
    * 设置对话框标题
    */
+  setDialogID(strID: string) {
+    this.dialogID = strID;
+  }
+
+  /**
+   * 设置对话框标题
+   */
   setDialogTitle(strTitle: string) {
     const labelTitle = this.m_labelTitle.getComponent(Label);
     labelTitle.string = strTitle;
@@ -92,49 +101,40 @@ export class DialogModal extends Component {
   }
 
   /**
-   * 设置确认按钮是否展示
-   */
-  setBtnConfirmActive(isActive: boolean) {
-    const btnConfirm = this.m_btnConfirm.getComponent(Button);
-    // console.log("ModuleDialog setBtnConfirmActive.", isActive, btnConfirm);
-    btnConfirm.node.active = isActive;
-  }
-
-  /**
-   * 设置确认按钮文案
-   */
-  setLabelConfirm(strLabel: string) {
-    // console.log("ModuleDialog setLabelConfirm.", strLabel);
-    const labelConfirm = this.m_labelConfirm.getComponent(Label);
-    labelConfirm.string = strLabel;
-  }
-
-  /**
    * 关闭对话框消息传递
    */
-  onDialogModalClose() {
-    // console.log("onDialogModalClose", Event);
-    const eventCustom = new MyEvent(
-      IDManager.ID_EVENT_DIALOG_MODAL_CLOSE,
-      true
-    );
-    this.node.dispatchEvent(eventCustom);
+  onDialogSelectClose() {
+    // console.log("onDialogSelectClose", Event);
     this.node.active = false;
     this.node.removeFromParent();
   }
 
   /**
-   * 右上角关闭按钮点击
+   * 取消按钮点击
    */
-  handleBtnCloseClick() {
-    this.onDialogModalClose();
+  handleBtnCancelClick() {
+    const params = { dialogID: this.dialogID };
+    const eventCustom = new MyEvent(
+      IDManager.ID_EVENT_DIALOG_SELECT_CANCEL,
+      true,
+      params
+    );
+    this.node.dispatchEvent(eventCustom);
+    this.onDialogSelectClose();
   }
 
   /**
    * 确认按钮点击
    */
   hanldeBtnConfirmClick() {
-    this.onDialogModalClose();
+    const params = { dialogID: this.dialogID };
+    const eventCustom = new MyEvent(
+      IDManager.ID_EVENT_DIALOG_SELECT_CONFIRM,
+      true,
+      params
+    );
+    this.node.dispatchEvent(eventCustom);
+    this.onDialogSelectClose();
   }
 }
 

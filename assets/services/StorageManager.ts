@@ -18,24 +18,18 @@ class StorageManager {
    * @param {*} time 缓存时间、单位为秒、不传值则永久缓存
    */
   setStorageSync(key: string, value: any, time: any) {
-    if (sys.platform !== sys.WECHAT_GAME) {
-      return;
-    }
     const header = `CACHE_`; // 管理字段前缀
     const tailer = "_DEADTIME"; // 管理字段后缀
     const strKey = `${header}${key}`;
     const strTime = `${header}${key}${tailer}`;
     const seconds = parseInt(time);
-    // @ts-ignore
-    wx.setStorageSync(strKey, value);
+    sys.localStorage.setItem(strKey, value);
     if (seconds > 0) {
       let timestamp = Date.parse(String(new Date()));
       timestamp = timestamp / 1000 + seconds;
-      // @ts-ignore
-      wx.setStorageSync(strTime, timestamp);
+      sys.localStorage.setItem(strTime, timestamp);
     } else {
-      // @ts-ignore
-      wx.removeStorageSync(strTime);
+      sys.localStorage.removeItem(strTime);
     }
   }
 
@@ -45,23 +39,19 @@ class StorageManager {
    * @returns 缓存值、如不存在或超时则返回undefined
    */
   getStorageSync(key: string) {
-    if (sys.platform !== sys.WECHAT_GAME) {
-      return undefined;
-    }
     const header = `CACHE_`; // 管理字段前缀
     const tailer = "_DEADTIME"; // 管理字段后缀
     const strKey = `${header}${key}`;
     const strTime = `${header}${key}${tailer}`;
     // @ts-ignore
-    const deadtime = parseInt(wx.getStorageSync(strTime));
+    const deadtime = parseInt(sys.localStorage.getItem(strTime));
 
     if (deadtime) {
       if (Number(deadtime) < Date.parse(String(new Date())) / 1000) {
         return undefined;
       }
     }
-    // @ts-ignore
-    const res = wx.getStorageSync(strKey);
+    const res = sys.localStorage.getItem(strKey);
     return res;
   }
 
@@ -70,29 +60,20 @@ class StorageManager {
    * @param {*} key 缓存键
    */
   removeStorageSync(key: string) {
-    if (sys.platform !== sys.WECHAT_GAME) {
-      return;
-    }
     const header = `CACHE_`; // 管理字段前缀
     const tailer = "_DEADTIME"; // 管理字段后缀
     const strKey = `${header}${key}`;
     const strTime = `${header}${key}${tailer}`;
 
-    // @ts-ignore
-    wx.removeStorageSync(strKey);
-    // @ts-ignore
-    wx.removeStorageSync(strTime);
+    sys.localStorage.removeItem(strKey);
+    sys.localStorage.removeItem(strTime);
   }
 
   /**
    * 清除所有缓存
    */
   clearStorageSync() {
-    if (sys.platform !== sys.WECHAT_GAME) {
-      return;
-    }
-    // @ts-ignore
-    wx.clearStorageSync();
+    sys.localStorage.clear();
   }
 }
 

@@ -1,15 +1,15 @@
 // 云函数入口文件
 const cloud = require("wx-server-sdk");
-const loginUserInfo = require("loginUserInfo/index.js");
-const queryUserInfo = require("queryUserInfo/index.js");
+const addMemberInfo = require("addMemberInfo/index.js");
+const loginMemberInfo = require("loginMemberInfo/index.js");
 
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV, // API 调用都保持和云函数当前所在环境一致
 });
 
 /**
- * fetchUserInfo
- * 处理跟 USER 表相关的信息
+ * fetchMemberInfo
+ * 处理跟 MEMBER 表相关的信息
  * @param {*} event
  * @param {*} context
  * @returns
@@ -25,11 +25,11 @@ exports.main = async (event, context) => {
   let objResult = {};
 
   switch (event.type) {
-    case "LOGIN_USER_INFO":
-      objResult = await loginUserInfo(event.data, db, strMemberId);
-    case "QUERY_USER_INFO":
-      objResult = await queryUserInfo(event.data, db, strMemberId);
+    case "ADD_MEMBER_INFO":
+      objResult = await addMemberInfo(event.data, db, strMemberId);
       break;
+    case "LOGIN_MEMBER_INFO":
+      objResult = await loginMemberInfo(event.data, db, strMemberId);
     default:
       break;
   }
