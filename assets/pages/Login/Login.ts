@@ -71,6 +71,7 @@ export class Login extends Component {
       this.btnLogin.onTap(this.hanldeBtnLoginClick);
       this.btnLogin.show();
     }
+    this.node.on("on-dialog-modal-close", this.handleDialogModalClose, this);
   }
 
   /**
@@ -82,6 +83,7 @@ export class Login extends Component {
       this.btnLogin.destroy();
       this.btnLogin = undefined;
     }
+    this.node.off("on-dialog-modal-close", this.handleDialogModalClose, this);
   }
 
   /**
@@ -122,6 +124,13 @@ export class Login extends Component {
   async handleBtnTestClick() {
     console.log("handleBtnTestClick");
     RouterManager.navigateTo("Main");
+  }
+
+  /**
+   * 关闭模态对话框
+   */
+  handleDialogModalClose() {
+    console.log("handleDialogModalClose");
   }
 }
 

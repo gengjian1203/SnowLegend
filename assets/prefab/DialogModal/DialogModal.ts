@@ -1,8 +1,14 @@
-import { _decorator, Component, Node, Label, Button } from "cc";
+import { _decorator, Component, Event, Node, Label, Button } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("DialogModal")
 export class DialogModal extends Component {
+  /**
+   * 灰色蒙版
+   */
+  @property(Node)
+  m_mask: any = undefined;
+
   /**
    * 标题
    */
@@ -31,9 +37,35 @@ export class DialogModal extends Component {
     // [3]
   }
 
+  onEnable() {
+    console.log("ModuleDialog onEvable.");
+    this.regEvent();
+  }
+
+  onDisable() {
+    console.log("ModuleDialog onDisable.");
+    this.unRegEvent();
+  }
+
   // update (deltaTime: number) {
   //     // [4]
   // }
+
+  /**
+   * 注册事件
+   */
+  regEvent() {
+    this.m_mask.on("touchstart", this.handleStopPropagation);
+    this.m_mask.on("touchend", this.handleStopPropagation);
+  }
+
+  /**
+   * 注销事件
+   */
+  unRegEvent() {
+    this.m_mask.off("touchstart", this.handleStopPropagation);
+    this.m_mask.off("touchend", this.handleStopPropagation);
+  }
 
   /**
    * 设置对话框标题
@@ -71,6 +103,38 @@ export class DialogModal extends Component {
     console.log("ModuleDialog setLabelConfirm.", strLabel);
     const labelConfirm = this.m_labelConfirm.getComponent(Label);
     labelConfirm.string = strLabel;
+  }
+
+  /**
+   * 关闭对话框消息传递
+   */
+  onDialogModalClose() {
+    console.log("onDialogModalClose", Event);
+    const eventCustom = new Event("on-dialog-modal-close", true);
+    this.node.dispatchEvent(eventCustom);
+    this.node.active = false;
+    this.node.removeFromParent();
+  }
+
+  /**
+   * 阻止消息冒泡
+   */
+  handleStopPropagation(event: any) {
+    event.stopPropagation();
+  }
+
+  /**
+   * 右上角关闭按钮点击
+   */
+  handleBtnCloseClick() {
+    this.onDialogModalClose();
+  }
+
+  /**
+   * 确认按钮点击
+   */
+  hanldeBtnConfirmClick() {
+    this.onDialogModalClose();
   }
 }
 
