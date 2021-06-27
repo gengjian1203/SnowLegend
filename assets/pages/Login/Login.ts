@@ -31,7 +31,7 @@ export class Login extends Component {
   m_prefabDlg: any = undefined;
 
   start() {
-    console.log("Login start...");
+    // console.log("Login start...");
     this.init();
 
     // [3]
@@ -91,7 +91,7 @@ export class Login extends Component {
    */
   async hanldeBtnLoginClick(res: any) {
     const userInfo = res?.userInfo;
-    console.log("hanldeBtnLoginClick", userInfo);
+    // console.log("hanldeBtnLoginClick", userInfo);
     if (userInfo) {
       StorageManager.setStorageSync("USERINFO", userInfo);
       const res = await Api.getUserInfo({});
@@ -104,7 +104,7 @@ export class Login extends Component {
    * 点击公告按钮
    */
   async handleBtnNoticeClick() {
-    console.log("handleBtnNoticeClick");
+    // console.log("handleBtnNoticeClick");
     if (this.btnLogin) {
       this.btnLogin.hide();
     }
@@ -122,7 +122,7 @@ export class Login extends Component {
    * 点击测试按钮
    */
   async handleBtnTestClick() {
-    console.log("handleBtnTestClick");
+    // console.log("handleBtnTestClick");
     RouterManager.navigateTo("Main");
   }
 
@@ -130,7 +130,10 @@ export class Login extends Component {
    * 关闭模态对话框
    */
   handleDialogModalClose() {
-    console.log("handleDialogModalClose");
+    // console.log("handleDialogModalClose");
+    if (this.btnLogin) {
+      this.btnLogin.show();
+    }
   }
 }
 

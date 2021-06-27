@@ -38,12 +38,12 @@ export class DialogModal extends Component {
   }
 
   onEnable() {
-    console.log("ModuleDialog onEvable.");
+    // console.log("ModuleDialog onEvable.");
     this.regEvent();
   }
 
   onDisable() {
-    console.log("ModuleDialog onDisable.");
+    // console.log("ModuleDialog onDisable.");
     this.unRegEvent();
   }
 
@@ -55,16 +55,16 @@ export class DialogModal extends Component {
    * 注册事件
    */
   regEvent() {
-    this.m_mask.on("touchstart", this.handleStopPropagation);
-    this.m_mask.on("touchend", this.handleStopPropagation);
+    this.m_mask.on(Node.EventType.TOUCH_START, this.handleStopPropagation);
+    this.m_mask.on(Node.EventType.TOUCH_END, this.handleStopPropagation);
   }
 
   /**
    * 注销事件
    */
   unRegEvent() {
-    this.m_mask.off("touchstart", this.handleStopPropagation);
-    this.m_mask.off("touchend", this.handleStopPropagation);
+    this.m_mask.off(Node.EventType.TOUCH_START, this.handleStopPropagation);
+    this.m_mask.off(Node.EventType.TOUCH_END, this.handleStopPropagation);
   }
 
   /**
@@ -81,7 +81,7 @@ export class DialogModal extends Component {
    */
   setDialogContent(strContent: string) {
     const str = strContent.replace(/\\n/g, "\n");
-    console.log("ModuleDialog setNoticeContent.", strContent, str);
+    // console.log("ModuleDialog setNoticeContent.", strContent, str);
     const labelContent = this.m_labelContent.getComponent(Label);
     labelContent.string = str;
     // labelContent._forceUpdateRenderData(true);
@@ -92,7 +92,7 @@ export class DialogModal extends Component {
    */
   setBtnConfirmActive(isActive: boolean) {
     const btnConfirm = this.m_btnConfirm.getComponent(Button);
-    console.log("ModuleDialog setBtnConfirmActive.", isActive, btnConfirm);
+    // console.log("ModuleDialog setBtnConfirmActive.", isActive, btnConfirm);
     btnConfirm.node.active = isActive;
   }
 
@@ -100,7 +100,7 @@ export class DialogModal extends Component {
    * 设置确认按钮文案
    */
   setLabelConfirm(strLabel: string) {
-    console.log("ModuleDialog setLabelConfirm.", strLabel);
+    // console.log("ModuleDialog setLabelConfirm.", strLabel);
     const labelConfirm = this.m_labelConfirm.getComponent(Label);
     labelConfirm.string = strLabel;
   }
@@ -109,7 +109,7 @@ export class DialogModal extends Component {
    * 关闭对话框消息传递
    */
   onDialogModalClose() {
-    console.log("onDialogModalClose", Event);
+    // console.log("onDialogModalClose", Event);
     const eventCustom = new Event("on-dialog-modal-close", true);
     this.node.dispatchEvent(eventCustom);
     this.node.active = false;
@@ -120,7 +120,8 @@ export class DialogModal extends Component {
    * 阻止消息冒泡
    */
   handleStopPropagation(event: any) {
-    event.stopPropagation();
+    // console.log("handleStopPropagation", event);
+    event.propagationStopped = true;
   }
 
   /**
