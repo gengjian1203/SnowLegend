@@ -5,5 +5,11 @@
   "version": "3.1.1",
   "creator": {
     "version": "3.1.1"
+  },
+  "dependencies": {
+    "blueimp-md5": "^2.18.0"
+  },
+  "devDependencies": {
+    "@types/blueimp-md5": "^2.18.0"
   }
 }

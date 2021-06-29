@@ -103,7 +103,7 @@ export class Login extends Component {
     // console.log("hanldeBtnLoginClick", userInfo);
     if (userInfo) {
       StorageManager.setStorageSync("USERINFO", userInfo);
-      const res = await Api.loginMemberInfo();
+      const res = await Api.queryMemberInfo();
       console.log("Login getUserInfo", res);
       RouterManager.navigateTo("Main");
     }

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "blueimp-md5": "^2.18.0",
     "wx-server-sdk": "^2.5.1"
   }
 }

@@ -1,5 +1,9 @@
+// @ts-ignore
+import md5 from "blueimp-md5";
 import { sys } from "cc";
 import webConfig from "../config/web";
+
+const keyToken = "I have a dream";
 
 /**
  * 接口请求管理器
@@ -35,18 +39,25 @@ class FetchManager {
   fetch(strCloudName: string, objCloudParams: any) {
     return new Promise((resolve, reject) => {
       if (sys.platform === sys.WECHAT_GAME) {
+        const keyTime = String(new Date().getTime());
+        const keySecret = md5(`${keyToken}${keyTime}${objCloudParams.type}`);
+        const param = {
+          ...objCloudParams,
+          keyTime: keyTime,
+          keySecret: keySecret,
+        };
         // @ts-ignore
         wx.cloud
           .callFunction({
             name: strCloudName,
-            data: objCloudParams,
+            data: param,
           })
           .then((res: any) => {
-            this.fetchSuccess(strCloudName, objCloudParams, res);
+            this.fetchSuccess(strCloudName, param, res);
             resolve(res.result);
           })
           .catch((err: any) => {
-            this.fetchError(strCloudName, objCloudParams, err);
+            this.fetchError(strCloudName, param, err);
             reject(err);
           });
       } else {

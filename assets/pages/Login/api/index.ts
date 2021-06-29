@@ -7,7 +7,7 @@ export const testMemberInfo = async (params: any = {}) => {
   const strCloudName = "fetchMemberInfo";
   const objCloudParams = {
     ...params,
-    type: "QUERY_MEMBER_INFO",
+    type: "QUERY_MEMBER",
   };
   const res = await FetchManager.fetch(strCloudName, objCloudParams);
   console.log("Api testMemberInfo", res);
@@ -17,18 +17,18 @@ export const testMemberInfo = async (params: any = {}) => {
 /**
  * 测试接口
  */
-export const loginMemberInfo = async (params: any = {}) => {
+export const queryMemberInfo = async (params: any = {}) => {
   const strCloudName = "fetchMemberInfo";
   const objCloudParams = {
     ...params,
-    type: "LOGIN_MEMBER_INFO",
+    type: "QUERY_MEMBER",
   };
   const res = await FetchManager.fetch(strCloudName, objCloudParams);
-  console.log("Api loginMemberInfo", res);
+  console.log("Api queryMemberInfo", res);
   return res;
 };
 
 export default {
   testMemberInfo,
-  loginMemberInfo,
+  queryMemberInfo,
 };

@@ -187,6 +187,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">Common/Button.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,27,125,54</rect>
+                <key>scale9Paddings</key>
+                <rect>63,27,125,54</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../../../github/hcSpriteCuter/export/CommonDialogBg_RETINA/CommonDialogBg_RETINA0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -222,6 +237,7 @@
         <array>
             <filename>../../../github/hcSpriteCuter/export/CommonDialogBg_RETINA/CommonDialogBg_RETINA0.png</filename>
             <filename>../../../github/hcSpriteCuter/export/CommonDialogBg_RETINA/CommonDialogBg_RETINA1.png</filename>
+            <filename>Common/Button.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
