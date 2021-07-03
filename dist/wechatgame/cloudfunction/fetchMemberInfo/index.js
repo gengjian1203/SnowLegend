@@ -14,9 +14,9 @@ const objFunction = {
 };
 
 const verifyRequest = (event) => {
-  const keyToken = "I have a dream";
-  const { keyTime, keySecret, type } = event;
-  const keySecretLocal = md5(`${keyToken}${keyTime}${type}`);
+  const keyToken = "I, have 187076081 dream!";
+  const { keyTime, keySecret, type, data } = event;
+  const keySecretLocal = md5(`${keyTime}${type}${keyToken}${data}`);
   // console.log("verifyRequest", keyToken, keyTime, type);
   // console.log("verifyRequest", keyTime, keySecret, keySecretLocal);
   return keyTime && keySecret && keySecretLocal === keySecret;
@@ -42,7 +42,8 @@ exports.main = async (event, context) => {
     objResult = await objFunction[type](data, db, memberId);
   } else {
     objResult = {
-      data: "密令校验非法",
+      code: 500001,
+      msg: "密令校验非法",
     };
   }
 

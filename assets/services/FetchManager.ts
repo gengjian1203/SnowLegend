@@ -3,7 +3,7 @@ import md5 from "blueimp-md5";
 import { sys } from "cc";
 import webConfig from "../config/web";
 
-const keyToken = "I have a dream";
+const keyToken = "I, have 187076081 dream!";
 
 /**
  * 接口请求管理器
@@ -40,7 +40,9 @@ class FetchManager {
     return new Promise((resolve, reject) => {
       if (sys.platform === sys.WECHAT_GAME) {
         const keyTime = String(new Date().getTime());
-        const keySecret = md5(`${keyToken}${keyTime}${objCloudParams.type}`);
+        const keySecret = md5(
+          `${keyTime}${objCloudParams.type}${keyToken}${objCloudParams.data}`
+        );
         const param = {
           ...objCloudParams,
           keyTime: keyTime,
