@@ -3,7 +3,6 @@ import { sys } from "cc";
 // 公共方法管理器
 class UtilsManager {
   static instance: any = null;
-
   static getInstance() {
     if (!this.instance) {
       this.instance = new UtilsManager();

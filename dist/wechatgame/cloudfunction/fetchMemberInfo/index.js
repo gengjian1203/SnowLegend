@@ -38,7 +38,7 @@ exports.main = async (event, context) => {
   if (verifyRequest(event)) {
     const db = cloud.database();
     const memberId = `mem-${OPENID}`;
-    console.log("请求人:", memberId, type);
+    console.log("请求人:", memberId, type, data);
     objResult = await objFunction[type](data, db, memberId);
   } else {
     objResult = {

@@ -2,7 +2,7 @@ import { _decorator, Component, instantiate, Node, Prefab } from "cc";
 import IDManager from "../../services/IDManager";
 import StorageManager from "../../services/StorageManager";
 import RouterManager from "../../services/RouterManager";
-import Api from "./api";
+import Api from "../../api";
 import Utils from "./utils";
 
 const { ccclass, property } = _decorator;
@@ -103,9 +103,13 @@ export class Login extends Component {
     // console.log("hanldeBtnLoginClick", userInfo);
     if (userInfo) {
       StorageManager.setStorageSync("USERINFO", userInfo);
-      const res = await Api.queryMemberInfo();
+      const res = await Api.fetchMemberInfo.queryMemberInfo();
       console.log("Login getUserInfo", res);
-      RouterManager.navigateTo("Main");
+      if (res) {
+        RouterManager.navigateTo("Main");
+      } else {
+        RouterManager.navigateTo("Preface");
+      }
     }
   }
 

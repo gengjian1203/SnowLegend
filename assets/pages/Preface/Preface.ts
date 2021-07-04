@@ -7,9 +7,12 @@ import {
   EditBox,
   Prefab,
 } from "cc";
+import Api from "../../api";
 import IDManager from "../../services/IDManager";
 import RouterManager from "../../services/RouterManager";
+import StorageManager from "../../services/StorageManager";
 import UtilsManager from "../../services/UtilsManager";
+import name from "./config/name";
 
 const { ccclass, property } = _decorator;
 
@@ -141,7 +144,6 @@ export class Preface extends Component {
     this.unschedule(this.showContent);
     this.m_labelContent.getComponent(Label).string = this.strContent;
     this.bFinish = true;
-    this.m_dlgName.active = true;
   }
 
   /**
@@ -165,6 +167,8 @@ export class Preface extends Component {
     console.log("Preface onMaskClick");
     if (!this.bFinish) {
       this.finishContent();
+    } else {
+      this.m_dlgName.active = true;
     }
   }
 
@@ -174,7 +178,7 @@ export class Preface extends Component {
   handleBtnNameRandom() {
     console.log("handleBtnNameRandom");
     const editBoxName = this.m_editBoxName.getComponent(EditBox);
-    editBoxName.string = Math.random();
+    editBoxName.string = name.getRandomName();
   }
 
   /**
@@ -185,12 +189,19 @@ export class Preface extends Component {
     this.dlgSelect = instantiate(this.m_prefabDlgSelect);
     const dlgSelect = this.dlgSelect.getComponent("DialogSelect");
     const editBoxName = this.m_editBoxName.getComponent(EditBox);
+    const editBoxNameText = editBoxName.string.trim();
 
-    dlgSelect.setDialogID(IDManager.ID_DLG_SELECT_NAME_CONFIRM);
-    dlgSelect.setDialogTitle("提示");
-    dlgSelect.setDialogContent(
-      `“${editBoxName.string}”可真是个好名字，你确认要使用么？`
-    );
+    if (editBoxNameText) {
+      dlgSelect.setDialogID(IDManager.ID_DLG_SELECT_NAME_CONFIRM);
+      dlgSelect.setDialogTitle("提示");
+      dlgSelect.setDialogContent(
+        `“${editBoxNameText}”可真是个好名字，你确认要使用么？`
+      );
+    } else {
+      dlgSelect.setDialogID(IDManager.ID_DLG_SELECT_NAME_EMPTY);
+      dlgSelect.setDialogTitle("提示");
+      dlgSelect.setDialogContent(`没有个响亮的名字怎么能行\n=.=#`);
+    }
     this.m_canvas.addChild(this.dlgSelect);
   }
 
@@ -204,13 +215,20 @@ export class Preface extends Component {
   /**
    * 选择对话框点击确认
    */
-  hanldeDialogSelectConfirmClick(e: any) {
+  async hanldeDialogSelectConfirmClick(e: any) {
     console.log("hanldeDialogSelectConfirmClick", e);
     const { detail } = e;
     switch (detail.dialogID) {
       case IDManager.ID_DLG_SELECT_NAME_CONFIRM:
         console.log("请求接口");
-        if (false) {
+        const userInfo = StorageManager.getStorageSync("USERINFO");
+        const nickName = this.m_editBoxName.getComponent(EditBox).string.trim();
+        const params = {
+          ...userInfo,
+          nickName: nickName,
+        };
+        const res = await Api.fetchMemberInfo.addMemberInfo(params);
+        if (res) {
           RouterManager.navigateTo("Main");
         } else {
           this.dlgSelect = instantiate(this.m_prefabDlgSelect);
@@ -223,6 +241,9 @@ export class Preface extends Component {
         break;
       case IDManager.ID_DLG_SELECT_NAME_REPEAT:
         console.log("姓名重复");
+        break;
+      case IDManager.ID_DLG_SELECT_NAME_EMPTY:
+        console.log("姓名不能为空");
         break;
       default:
         break;
