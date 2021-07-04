@@ -228,15 +228,17 @@ export class Preface extends Component {
           nickName: nickName,
         };
         const res = await Api.fetchMemberInfo.addMemberInfo(params);
-        if (res) {
-          RouterManager.navigateTo("Main");
-        } else {
+        if (res.code === 500003) {
           this.dlgSelect = instantiate(this.m_prefabDlgSelect);
           const dlgSelect = this.dlgSelect.getComponent("DialogSelect");
           dlgSelect.setDialogID(IDManager.ID_DLG_SELECT_NAME_REPEAT);
           dlgSelect.setDialogTitle("提示");
-          dlgSelect.setDialogContent(`改名字已被占用，请重新输入`);
+          dlgSelect.setDialogContent(`该昵称已被占用，请重新输入`);
           this.m_canvas.addChild(this.dlgSelect);
+        } else {
+          // res.code === 500002 重复注册用户相当于直接登录
+          StorageManager.setStorageSync("MEMBERINFO", res.data);
+          RouterManager.navigateTo("Main");
         }
         break;
       case IDManager.ID_DLG_SELECT_NAME_REPEAT:

@@ -43,9 +43,12 @@ exports.main = async (event, context) => {
   } else {
     objResult = {
       code: 500001,
-      msg: "密令校验非法",
+      errMsg: "密令校验非法",
     };
   }
+
+  const code = objResult.errCode || objResult.code;
+  objResult.code = code ? code : 200;
 
   return objResult;
 };

@@ -105,10 +105,10 @@ export class Login extends Component {
       StorageManager.setStorageSync("USERINFO", userInfo);
       const res = await Api.fetchMemberInfo.queryMemberInfo();
       console.log("Login getUserInfo", res);
-      if (res) {
-        RouterManager.navigateTo("Main");
-      } else {
+      if (res.code === -1) {
         RouterManager.navigateTo("Preface");
+      } else {
+        RouterManager.navigateTo("Main");
       }
     }
   }

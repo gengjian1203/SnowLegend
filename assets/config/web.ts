@@ -1,4 +1,4 @@
-const webKey = "prod"; // 'test' - 测试 | 'prod' - 生产
+const webKey = "test"; // 'test' - 测试 | 'prod' - 生产
 
 const web = {
   test: {

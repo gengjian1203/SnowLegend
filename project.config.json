@@ -42,7 +42,7 @@
   "libVersion": "2.17.3",
   "appid": "wx0a905fba275f3702",
   "projectname": "SnowLegend",
-  "miniprogramRoot": "miniprogram/",
+  "miniprogramRoot": "dist/wechatgame/miniprogram/",
   "cloudfunctionRoot": "cloudfunction/",
   "watchOptions": {
     "ignore": []

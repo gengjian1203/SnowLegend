@@ -38,19 +38,18 @@ const createMember = async (data, db, strMemberId, date, time) => {
     userCellphone: data.cellphone, // 手机号
     // 应用级
     appLevel: 1, // 等级
-    appExp: 0 // 经验
+    appExp: 0, // 经验
   };
   // 创建新的玩家信息
   try {
     await db.collection("TB_MEMBER").add({ data: objMember });
     objResult = {
       code: 200,
-      data: { data: objMember }
+      data: objMember,
     };
   } catch (e) {
     objResult = {
-      code: 500,
-      data: e
+      ...e,
     };
     console.error("addMemberInfo error", e);
   }
@@ -61,6 +60,7 @@ const createMember = async (data, db, strMemberId, date, time) => {
 async function addMemberInfo(data, db, strMemberId) {
   let objResult = {};
   let objMemberInfo;
+  let objSameMemberInfo;
   const date = new Date();
   const YYYY = date.getFullYear();
   const MM = date.getMonth() + 1;
@@ -71,23 +71,43 @@ async function addMemberInfo(data, db, strMemberId) {
   const time = `${YYYY}-${MM}-${DD} ${hh}:${mm}:${ss}`;
 
   try {
-    objMemberInfo = await db
-      .collection("TB_MEMBER")
-      .doc(strMemberId)
-      .get();
+    objMemberInfo = await db.collection("TB_MEMBER").doc(strMemberId).get();
   } catch (e) {
     console.error("addMemberInfo error", e);
   }
 
   if (objMemberInfo) {
-    // 已经注册过注册
     objResult = {
-      code: 200,
-      data: objMemberInfo
+      code: 500002,
+      ...objMemberInfo,
+      errMsg: "重复注册用户",
     };
   } else {
-    // 尚未注册过，创建角色
-    objResult = await createMember(data, db, strMemberId, date, time);
+    try {
+      objSameMemberInfo = await db
+        .collection("TB_MEMBER")
+        .where({
+          userNickName: data.nickName,
+        })
+        .get();
+    } catch (e) {
+      console.error("addMemberInfo error", e);
+    }
+
+    if (
+      objSameMemberInfo &&
+      objSameMemberInfo.data &&
+      objSameMemberInfo.data.length > 0
+    ) {
+      objResult = {
+        code: 500003,
+        ...objSameMemberInfo,
+        errMsg: "注册昵称重复",
+      };
+    } else {
+      // 尚未注册过，创建角色
+      objResult = await createMember(data, db, strMemberId, date, time);
+    }
   }
 
   return objResult;

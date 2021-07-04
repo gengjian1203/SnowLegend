@@ -7,22 +7,15 @@
  * @returns
  */
 
-async function queryMemberInfo(data, db) {
+async function queryMemberInfo(data, db, strMemberId) {
   let objResult = {};
 
   try {
-    objResult = {
-      code: 200,
-      data: await db
-        .collection("TB_MEMBER")
-        .doc(data._id)
-        .get()
-    };
+    objResult = await db.collection("TB_MEMBER").doc(strMemberId).get();
   } catch (e) {
     // 没有查到。异常。
     objResult = {
-      code: 500,
-      data: e
+      ...e,
     };
     console.error("queryMemberInfo error", e);
   }
