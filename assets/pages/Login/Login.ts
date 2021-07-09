@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Node, Prefab } from "cc";
+import { sys, _decorator, Component, instantiate, Node, Prefab } from "cc";
 import IDManager from "../../services/IDManager";
 import StorageManager from "../../services/StorageManager";
 import RouterManager from "../../services/RouterManager";
@@ -13,7 +13,6 @@ export class Login extends Component {
    * 登录按钮
    */
   btnLogin: any = undefined;
-
   /**
    * 模态对话框
    */
@@ -24,12 +23,16 @@ export class Login extends Component {
    */
   @property(Node)
   m_canvas: any = undefined;
-
   /**
    * 预制体-对话框
    */
   @property(Prefab)
   m_prefabDlg: any = undefined;
+  /**
+   * 测试按钮
+   */
+   @property(Node)
+   m_btnTest: any = undefined;
 
   start() {
     // console.log("Login start...");
@@ -60,6 +63,7 @@ export class Login extends Component {
    * 页面初始化
    */
   init() {
+    this.m_btnTest.active = sys.platform !== sys.WECHAT_GAME;
     Utils.passiveShare();
   }
 
@@ -136,7 +140,8 @@ export class Login extends Component {
    */
   async handleBtnTestClick() {
     // console.log("handleBtnTestClick");
-    RouterManager.navigateTo("Preface");
+    // RouterManager.navigateTo("Preface");
+    RouterManager.navigateTo("Main");
   }
 
   /**
